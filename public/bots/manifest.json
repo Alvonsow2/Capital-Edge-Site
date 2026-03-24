@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1",
+    "name": "Even Bot Free Version",
+    "description": "Even/Odd digit trading bot with martingale recovery, scalping mode, and target profit controls for Volatility 100 index.",
+    "fileName": "Even_Bot_Free_Version_1774262680612.xml",
+    "category": "Even/Odd",
+    "icon": "🎲"
+  },
+  {
+    "id": "2",
+    "name": "Poverty X V2.1",
+    "description": "RSI-driven Rise/Fall bot on Volatility 10 index with martingale staking — buys PUT when RSI ≤ 50 and CALL when RSI ≥ 50.",
+    "fileName": "Poverty_X_V2.1_1774262680632.xml",
+    "category": "Rise/Fall",
+    "icon": "📊"
+  },
+  {
+    "id": "3",
+    "name": "Higher Lower Dbot",
+    "description": "Dual RSI strategy bot for Higher/Lower contracts on Volatility 10 index with automated martingale staking logic.",
+    "fileName": "Higher_lower_Dbot_1774262680634.xml",
+    "category": "Higher/Lower",
+    "icon": "↕️"
+  },
+  {
+    "id": "4",
+    "name": "Asian Pro Dbot",
+    "description": "Professional Asian Up/Down contract bot on Volatility 100 with smart martingale recovery and target profit/loss limits.",
+    "fileName": "Asian_Pro_Dbot_1774262680635.xml",
+    "category": "Asian",
+    "icon": "🌏"
+  },
+  {
+    "id": "5",
+    "name": "Over Market Dream V2.1",
+    "description": "RSI-based Over/Under digit bot on Volatility 100 index with dual-direction entries and automatic martingale staking.",
+    "fileName": "Over_Market_Dream_2.1_1774262680637.xml",
+    "category": "Over/Under",
+    "icon": "🔝"
+  }
+]

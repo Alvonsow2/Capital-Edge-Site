@@ -1,0 +1,108 @@
+@keyframes ce-shimmer {
+    0% {
+        background-position: -300px 0;
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        background-position: 300px 0;
+        opacity: 0;
+    }
+}
+
+@keyframes ce-float {
+    0%, 100% {
+        transform: translateY(0px) scale(1);
+    }
+    25% {
+        transform: translateY(-2px) scale(1.01);
+    }
+    75% {
+        transform: translateY(1px) scale(0.99);
+    }
+}
+
+.app-header {
+    &__logo {
+        padding-inline-start: 1.2rem;
+        padding-inline-end: 1.6rem;
+        border-inline-end: 1px solid #1e2d45;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+    }
+}
+
+.capital-edge-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.ce-logo-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 4px;
+    animation: ce-float 4s ease-in-out infinite;
+
+    &:hover {
+        animation-play-state: paused;
+    }
+}
+
+.ce-logo-img {
+    display: block;
+    height: 60px;
+    width: auto;
+    filter: drop-shadow(0px 0px 6px rgba(16, 185, 129, 0.45));
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+
+    @media (max-width: 768px) {
+        height: 42px;
+    }
+}
+
+.ce-logo-img--default {
+    display: block;
+}
+
+.ce-logo-img--dark {
+    display: none;
+}
+
+.theme--dark {
+    .ce-logo-img--default {
+        display: none;
+    }
+
+    .ce-logo-img--dark {
+        display: block;
+    }
+}
+
+.ce-logo-shimmer {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        105deg,
+        transparent 30%,
+        rgba(16, 185, 129, 0.35) 50%,
+        transparent 70%
+    );
+    background-size: 300px 100%;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    animation: ce-shimmer 3.5s ease-in-out infinite;
+    animation-delay: 1s;
+    border-radius: 4px;
+}

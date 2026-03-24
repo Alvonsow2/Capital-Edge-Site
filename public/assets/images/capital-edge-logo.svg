@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 64" width="300" height="64">
+  <defs>
+    <linearGradient id="boltGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd700"/>
+      <stop offset="100%" style="stop-color:#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="edgeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#60a5fa"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Lightning bolt icon -->
+  <polygon points="19,4 9,34 18,34 13,60 31,26 21,26 29,4" fill="url(#boltGrad)"/>
+
+  <!-- CAPITAL EDGE title row -->
+  <text y="30" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="21" font-weight="800" letter-spacing="1.5">
+    <tspan x="42" fill="#ffffff">CAPITAL </tspan><tspan fill="url(#edgeGrad)">EDGE</tspan>
+  </text>
+
+  <!-- "built for traders" subtitle -->
+  <text x="42" y="50" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="9.5" font-weight="400" fill="#8a9bb5" letter-spacing="3.5">BUILT FOR TRADERS</text>
+</svg>

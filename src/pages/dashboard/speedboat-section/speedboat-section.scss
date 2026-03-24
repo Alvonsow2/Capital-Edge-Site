@@ -1,0 +1,275 @@
+.speedboat-section {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0a0f1e 0%, #0d1a2e 40%, #0a1628 100%);
+    border-bottom: 1px solid rgba(16, 185, 129, 0.15);
+    margin: 0 0 2.4rem;
+
+    &__bg-glow {
+        position: absolute;
+        top: -60px;
+        right: -60px;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, transparent 70%);
+        pointer-events: none;
+    }
+
+    &__content {
+        display: flex;
+        align-items: center;
+        gap: 4rem;
+        padding: 4rem 4.8rem 3.2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+
+        @media (max-width: 1024px) {
+            flex-direction: column;
+            padding: 3.2rem 2.4rem 2.4rem;
+            gap: 2.4rem;
+        }
+
+        @media (max-width: 640px) {
+            padding: 2.4rem 1.6rem 2rem;
+            gap: 2rem;
+        }
+    }
+
+    &__left {
+        flex: 1;
+        min-width: 0;
+    }
+
+    &__badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        background: rgba(16, 185, 129, 0.12);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        color: #10b981;
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        padding: 0.5rem 1.2rem;
+        border-radius: 2rem;
+        margin-bottom: 1.6rem;
+    }
+
+    &__title {
+        font-size: 4.4rem;
+        font-weight: 800;
+        line-height: 1.1;
+        color: #f8fafc;
+        margin: 0 0 1.6rem;
+        letter-spacing: -0.02em;
+
+        @media (max-width: 1024px) {
+            font-size: 3.6rem;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 2.8rem;
+        }
+
+        &--green {
+            color: #10b981;
+            position: relative;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 2px;
+                left: 0;
+                right: 0;
+                height: 3px;
+                background: linear-gradient(90deg, #10b981, #34d399);
+                border-radius: 2px;
+                opacity: 0.6;
+            }
+        }
+    }
+
+    &__subtitle {
+        font-size: 1.5rem;
+        color: #94a3b8;
+        line-height: 1.7;
+        margin: 0 0 2.8rem;
+        max-width: 480px;
+
+        @media (max-width: 640px) {
+            font-size: 1.3rem;
+        }
+    }
+
+    &__stats {
+        display: flex;
+        align-items: center;
+        gap: 2.4rem;
+    }
+
+    &__stat {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+
+    &__stat-value {
+        font-size: 2.4rem;
+        font-weight: 800;
+        color: #10b981;
+        line-height: 1;
+        font-variant-numeric: tabular-nums;
+    }
+
+    &__stat-label {
+        font-size: 1.1rem;
+        color: #64748b;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+    }
+
+    &__stat-divider {
+        width: 1px;
+        height: 40px;
+        background: rgba(16, 185, 129, 0.2);
+    }
+
+    &__right {
+        flex: 1;
+        position: relative;
+        min-height: 280px;
+        min-width: 0;
+
+        @media (max-width: 1024px) {
+            width: 100%;
+            min-height: 220px;
+        }
+    }
+
+    &__boat-container {
+        position: relative;
+        width: 100%;
+    }
+
+    &__boat {
+        width: 100%;
+        max-width: 520px;
+        display: block;
+        margin: 0 auto;
+        filter: drop-shadow(0 8px 32px rgba(16, 185, 129, 0.2));
+    }
+
+    &__boat-group {
+        animation: boat-rock 4s ease-in-out infinite;
+        transform-origin: 260px 220px;
+    }
+
+    &__wake-1 {
+        animation: wake-flow 2s linear infinite;
+    }
+
+    &__wake-2 {
+        animation: wake-flow 2.5s linear infinite 0.5s;
+    }
+
+    &__sparks circle {
+        animation: spark-pulse 1.5s ease-in-out infinite;
+
+        &:nth-child(2) { animation-delay: 0.2s; }
+        &:nth-child(3) { animation-delay: 0.4s; }
+        &:nth-child(4) { animation-delay: 0.6s; }
+        &:nth-child(5) { animation-delay: 0.8s; }
+        &:nth-child(6) { animation-delay: 1.0s; }
+    }
+
+    &__water {
+        width: 100%;
+        height: 40px;
+        margin-top: -8px;
+        opacity: 0.6;
+    }
+
+    &__card {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        background: rgba(15, 23, 42, 0.85);
+        border: 1px solid rgba(16, 185, 129, 0.25);
+        border-radius: 1.2rem;
+        padding: 1rem 1.4rem;
+        backdrop-filter: blur(8px);
+        animation: float-card 3s ease-in-out infinite;
+
+        &--top {
+            top: 10px;
+            right: 0;
+            animation-delay: 0s;
+        }
+
+        &--bottom {
+            bottom: 50px;
+            right: 20px;
+            animation-delay: 1.5s;
+        }
+
+        @media (max-width: 1024px) {
+            display: none;
+        }
+    }
+
+    &__card-icon {
+        font-size: 2rem;
+    }
+
+    &__card-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #f1f5f9;
+        white-space: nowrap;
+    }
+
+    &__card-desc {
+        font-size: 1.1rem;
+        color: #64748b;
+        white-space: nowrap;
+    }
+
+    &__waves {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        pointer-events: none;
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+@keyframes boat-rock {
+    0%, 100% { transform: rotate(-1deg) translateY(0); }
+    50% { transform: rotate(1deg) translateY(-4px); }
+}
+
+@keyframes wake-flow {
+    0% { stroke-dashoffset: 0; opacity: 0.5; }
+    50% { opacity: 0.2; }
+    100% { stroke-dashoffset: -40; opacity: 0.5; }
+}
+
+@keyframes spark-pulse {
+    0%, 100% { opacity: 0.9; transform: scale(1); }
+    50% { opacity: 0.2; transform: scale(0.6); }
+}
+
+@keyframes float-card {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}

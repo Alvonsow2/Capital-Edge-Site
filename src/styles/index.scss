@@ -1,0 +1,397 @@
+@use 'components/shared/styles/themes' as *;
+@import 'https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,400,500,700&display=swap&subset=cyrillic,cyrillic-ext,latin-ext,vietnamese';
+
+body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background: var(--general-main-1);
+}
+
+.app-root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: var(--general-main-1);
+}
+
+#root {
+    background: var(--general-main-1);
+    min-height: 100vh;
+}
+
+.deriv-loader,
+.deriv-loader__container,
+.dc-loading,
+[class*='loader'],
+[class*='Loader'] {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+.layout {
+    background: var(--general-main-1);
+}
+
+.layout > *:not(.ce-navbar):not(.deriv-header):not(.main-body) {
+    background: var(--general-main-1);
+}
+
+.load-message {
+    color: var(--text-prominent);
+    margin-top: 1.6rem;
+    font-size: 1.4rem;
+}
+
+.icon-general-fill-path {
+    path {
+        fill: var(--text-general);
+    }
+}
+
+.icon-general-fill-g-path {
+    g {
+        path {
+            fill: var(--text-general);
+        }
+    }
+}
+
+/* ===== Global DBTraders-style overrides ===== */
+
+/* Force dark header */
+.deriv-header {
+    background: #0d1421 !important;
+    border-bottom: 1px solid #1e2d45 !important;
+
+    /* Header text/icon colors */
+    .app-header__menu,
+    .deriv-text,
+    span {
+        color: #c9d6e8 !important;
+    }
+}
+
+/* Logo area */
+.app-header__logo {
+    border-inline-end-color: #1e2d45 !important;
+}
+
+/* Auth buttons */
+.auth-actions {
+    button:first-child {
+        color: #c9d6e8 !important;
+        border-color: #2a3f5f !important;
+
+        &:hover {
+            background: rgba(59, 130, 246, 0.1) !important;
+            border-color: #3b82f6 !important;
+        }
+    }
+}
+
+/* Account switcher button */
+.deriv-account-switcher__button {
+    background: rgba(59, 130, 246, 0.15) !important;
+    border: 1px solid rgba(59, 130, 246, 0.3) !important;
+    border-radius: 6px !important;
+
+    .deriv-account-switcher__balance,
+    span,
+    .deriv-text {
+        color: #ffffff !important;
+    }
+}
+
+/* Platform switcher */
+.deriv-context-menu {
+    background: #1a2535 !important;
+    border: 1px solid #2a3f5f !important;
+}
+
+/* Menu items in header */
+.app-header__menu {
+    color: #c9d6e8 !important;
+
+    &:hover {
+        color: #ffffff !important;
+    }
+
+    svg path {
+        fill: #c9d6e8 !important;
+    }
+}
+
+/* Sign up button - bright blue like DBTraders */
+.auth-actions button:last-child,
+button[class*='primary'] {
+    background: linear-gradient(135deg, #1d6fec 0%, #1558c8 100%) !important;
+    border: none !important;
+
+    span {
+        color: #ffffff !important;
+    }
+
+    &:hover {
+        background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+        box-shadow: 0 4px 12px rgba(29, 111, 236, 0.4) !important;
+    }
+}
+
+/* Dashboard/Run panel improvements */
+.run-panel__container {
+    background: #0d1421 !important;
+    border-left: 1px solid #1e2d45 !important;
+}
+
+/* Bot dashboard cards */
+.dc-tabs__content,
+.dashboard__tab-content {
+    background: var(--general-main-1) !important;
+}
+
+/* ===== Inner nav tabs (Bot Builder, Charts, Tutorials, etc.) ===== */
+.main__container .dc-tabs__list,
+.main .dc-tabs__list {
+    background: #0d1421 !important;
+    border-bottom: 1px solid #1e2d45 !important;
+    padding: 0 !important;
+}
+
+.main__container .dc-tabs__item,
+.main .dc-tabs__item {
+    color: #8a9bb5 !important;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    height: 40px !important;
+    padding: 0 16px !important;
+    border-bottom: 2px solid transparent !important;
+    font-size: 12.5px !important;
+    font-weight: 500 !important;
+    transition: color 0.15s ease, background 0.15s ease !important;
+
+    svg path,
+    svg g path {
+        fill: #8a9bb5 !important;
+    }
+
+    &:hover {
+        color: #e2eaf5 !important;
+        background: rgba(255, 255, 255, 0.04) !important;
+    }
+}
+
+.main__container .dc-tabs__active,
+.main .dc-tabs__active {
+    background: rgba(59, 130, 246, 0.1) !important;
+    color: #4da3ff !important;
+    border-bottom: 2px solid #3b82f6 !important;
+
+    svg path,
+    svg g path {
+        fill: #4da3ff !important;
+    }
+
+    span {
+        color: #4da3ff !important;
+    }
+}
+
+.main__container .dc-tabs__active-line,
+.main .dc-tabs__active-line {
+    background-color: #3b82f6 !important;
+    height: 2px !important;
+}
+
+/* ===== Prevent flash on page load ===== */
+html,
+body,
+#root {
+    background-color: #0d1421 !important;
+}
+
+/* Make loading screens dark to prevent white flash */
+.chunk-loader,
+[class*='loader'],
+[class*='Loader'],
+.dc-loading {
+    background-color: #0d1421 !important;
+    color: #8a9bb5 !important;
+}
+
+/* Fix main area height — header only (no outer navbar anymore) */
+.main {
+    height: calc(100vh - 9rem) !important;
+}
+
+.free-bots-wrapper,
+.analysis-tool-wrapper {
+    height: calc(100vh - 9rem) !important;
+}
+
+/* Embed tab full-height iframe */
+.embed-tab-wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #0d1421;
+}
+
+.embed-tab-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+/* Emoji icons in inner tabs */
+.ce-tab-icon {
+    font-size: 15px;
+    line-height: 1;
+    margin-right: 4px;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* ============================================
+   LIGHT THEME OVERRIDES
+   ============================================ */
+.theme--light {
+    --general-main-1: #f8fafc;
+    --general-main-2: #f1f5f9;
+    --general-section-1: #e2e8f0;
+    --general-section-2: #f1f5f9;
+    --text-general: #1e293b;
+    --text-less-prominent: #475569;
+    --text-prominent: #0f172a;
+    --text-profit-success: #16a34a;
+    --text-loss-danger: #dc2626;
+
+    background-color: #f8fafc !important;
+    color: #1e293b;
+
+    html,
+    body,
+    #root {
+        background-color: #f8fafc !important;
+        color: #1e293b !important;
+    }
+
+    .app-header {
+        background: #1e293b !important;
+    }
+
+    .main,
+    .main__container,
+    .dc-tabs__content,
+    .run-panel__container,
+    .speedbot,
+    .copy-trading,
+    .analysis-tool-wrapper,
+    .embed-tab-wrapper {
+        background: #f8fafc !important;
+    }
+
+    .main__container .dc-tabs__list,
+    .main .dc-tabs__list {
+        background: #e2e8f0 !important;
+        border-bottom: 1px solid #cbd5e1 !important;
+    }
+
+    .main__container .dc-tabs__item,
+    .main .dc-tabs__item {
+        color: #475569 !important;
+    }
+
+    .main__container .dc-tabs__active,
+    .main .dc-tabs__active {
+        background: rgba(37, 99, 235, 0.08) !important;
+        color: #1d4ed8 !important;
+        border-bottom: 2px solid #2563eb !important;
+    }
+
+    .dc-input,
+    .dc-input__field,
+    input,
+    select,
+    textarea {
+        background: #fff !important;
+        border-color: #d1d5db !important;
+        color: #111827 !important;
+    }
+
+    .speedbot__select,
+    .speedbot__input,
+    .copy-trading__token-input {
+        background: #fff !important;
+        border-color: #d1d5db !important;
+        color: #111827 !important;
+    }
+
+    .speedbot__toggle-row,
+    .copy-trading__section,
+    .copy-trading__clients-section {
+        background: #f1f5f9 !important;
+        border-color: #e2e8f0 !important;
+    }
+
+    .speedbot__toggle-label,
+    .copy-trading__clients-header {
+        color: #374151 !important;
+    }
+
+    .speedbot__stats,
+    .copy-trading__empty {
+        color: #6b7280 !important;
+    }
+
+    .run-panel,
+    .run-panel__footer,
+    .dc-run-panel,
+    [class*='run-panel'] {
+        background: #f1f5f9 !important;
+        border-color: #e2e8f0 !important;
+    }
+
+    .dashboard,
+    .dashboard__tab-content {
+        background: #f8fafc !important;
+    }
+}
+
+/* ============================================
+   FULL-SCREEN for tabs 6+ (Speedbot, Trading View, Copy Trading)
+   ============================================ */
+.main--fullscreen {
+    padding: 0 !important;
+    height: calc(100vh - 4.8rem) !important;
+}
+
+.main--fullscreen .main__container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.main--fullscreen .dc-tabs {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.main--fullscreen .dc-tabs__content {
+    flex: 1;
+    height: 100%;
+    overflow: hidden;
+}
+
+.speedbot,
+.copy-trading {
+    height: 100%;
+    min-height: 0;
+}
+
+.embed-tab-wrapper {
+    height: 100%;
+}

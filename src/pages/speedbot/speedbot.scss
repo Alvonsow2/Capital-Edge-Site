@@ -1,0 +1,217 @@
+.speedbot {
+    display: flex;
+    height: 100%;
+    background: #0d1421;
+    overflow-y: auto;
+
+    &__left {
+        flex: 1;
+        width: 100%;
+        max-width: 100%;
+        padding: 16px 24px;
+
+        @media (min-width: 1024px) {
+            padding-right: 228px;
+        }
+    }
+
+    &__header {
+        font-size: 16px;
+        font-weight: 700;
+        color: #e2eaf5;
+        text-align: center;
+        letter-spacing: 0.04em;
+        padding: 12px 0 20px;
+        border-bottom: 1px solid #1e2d45;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    &__field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        &--half {
+            flex: 1;
+        }
+
+        &--inline {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+
+    &__row {
+        display: flex;
+        gap: 12px;
+    }
+
+    &__label {
+        font-size: 11px;
+        font-weight: 600;
+        color: #8a9bb5;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+    }
+
+    &__select {
+        width: 100%;
+        background: #131e30;
+        border: 1px solid #1e2d45;
+        border-radius: 6px;
+        color: #e2eaf5;
+        font-size: 13px;
+        padding: 10px 12px;
+        outline: none;
+        cursor: pointer;
+        appearance: auto;
+
+        &:focus {
+            border-color: #3b82f6;
+        }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        option {
+            background: #131e30;
+            color: #e2eaf5;
+        }
+    }
+
+    &__input {
+        width: 100%;
+        background: #131e30;
+        border: 1px solid #1e2d45;
+        border-radius: 6px;
+        color: #e2eaf5;
+        font-size: 13px;
+        padding: 10px 12px;
+        outline: none;
+        box-sizing: border-box;
+
+        &:focus {
+            border-color: #3b82f6;
+        }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        &--sm {
+            width: 100px;
+            text-align: right;
+        }
+    }
+
+    &__toggle-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 12px;
+        background: #131e30;
+        border: 1px solid #1e2d45;
+        border-radius: 6px;
+    }
+
+    &__toggle-label {
+        font-size: 13px;
+        color: #c5d1e0;
+    }
+
+    &__toggle {
+        position: relative;
+        width: 44px;
+        height: 24px;
+        border-radius: 12px;
+        background: #2a3a52;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        transition: background 0.2s ease;
+        flex-shrink: 0;
+
+        &--on {
+            background: #2563eb;
+        }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+
+    &__toggle-knob {
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #fff;
+        transition: transform 0.2s ease;
+
+        .speedbot__toggle--on & {
+            transform: translateX(20px);
+        }
+    }
+
+    &__btn {
+        width: 100%;
+        padding: 14px;
+        background: #1d4ed8;
+        border: none;
+        border-radius: 6px;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: background 0.15s ease, transform 0.1s ease;
+        margin-top: 4px;
+
+        &:hover {
+            background: #2563eb;
+        }
+
+        &:active {
+            transform: scale(0.99);
+        }
+
+        &--stop {
+            background: #dc2626;
+
+            &:hover {
+                background: #ef4444;
+            }
+        }
+    }
+
+    &__stats {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        color: #8a9bb5;
+        padding: 8px 4px;
+    }
+
+    &__status {
+        font-size: 12px;
+        color: #4da3ff;
+        text-align: center;
+        padding: 4px;
+        font-style: italic;
+    }
+}
