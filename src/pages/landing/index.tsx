@@ -44,10 +44,6 @@ const LandingPage: React.FC = () => {
         }
     };
 
-    const handleStartTrading = () => {
-        window.open('https://app.deriv.com', '_blank');
-    };
-
     return (
         <div className='ce-landing'>
             <div className='ce-landing__bg'>
@@ -82,7 +78,7 @@ const LandingPage: React.FC = () => {
                 </p>
 
                 <div className='ce-landing__cta'>
-                    <button className='ce-landing__btn ce-landing__btn--primary' onClick={handleStartTrading}>
+                    <button className='ce-landing__btn ce-landing__btn--primary' onClick={handleLogin}>
                         Start Trading Now &rarr;
                     </button>
                     <div className='ce-landing__trust-badges'>
