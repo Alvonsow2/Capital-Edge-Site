@@ -62,21 +62,6 @@ const LandingPage: React.FC = () => {
                 </div>
             </div>
 
-            <nav className='ce-landing__nav'>
-                <div className='ce-landing__nav-logo'>
-                    <img src='/ce-logo-default.png' alt='Capital Edge Logo' className='ce-landing__logo-img' />
-                    <span className='ce-landing__logo-text'>Capital Edge<span className='ce-landing__logo-dot'>.</span></span>
-                </div>
-                <div className='ce-landing__nav-links'>
-                    <button className='ce-landing__nav-btn' onClick={handleLogin}>
-                        Log In
-                    </button>
-                    <button className='ce-landing__nav-btn ce-landing__nav-btn--outline' onClick={handleStartTrading}>
-                        Start Trading
-                    </button>
-                </div>
-            </nav>
-
             <div className='ce-landing__content'>
                 <div className='ce-landing__badge'>
                     <span className='ce-landing__badge-dot' />
@@ -127,27 +112,6 @@ const LandingPage: React.FC = () => {
                 </div>
             </div>
 
-            <div className='ce-landing__features'>
-                <div className='ce-landing__feature'>
-                    <div className='ce-landing__feature-icon'>🤖</div>
-                    <h3 className='ce-landing__feature-title'>Bot Builder</h3>
-                    <p className='ce-landing__feature-desc'>Build automated trading bots with our visual drag-and-drop editor. No coding required.</p>
-                </div>
-                <div className='ce-landing__feature'>
-                    <div className='ce-landing__feature-icon'>📈</div>
-                    <h3 className='ce-landing__feature-title'>Live Charts</h3>
-                    <p className='ce-landing__feature-desc'>Access real-time market data and advanced charting tools to make informed decisions.</p>
-                </div>
-                <div className='ce-landing__feature'>
-                    <div className='ce-landing__feature-icon'>⚡</div>
-                    <h3 className='ce-landing__feature-title'>Copy Trading</h3>
-                    <p className='ce-landing__feature-desc'>Follow expert traders and automatically replicate their strategies for consistent profits.</p>
-                </div>
-            </div>
-
-            <footer className='ce-landing__footer'>
-                <p>© {new Date().getFullYear()} Capital Edge. All rights reserved. Built for Traders.</p>
-            </footer>
         </div>
     );
 };
