@@ -9,7 +9,7 @@ export const APP_IDS = {
     PRODUCTION: 65555,
     PRODUCTION_BE: 65556,
     PRODUCTION_ME: 65557,
-    CAPITAL_EDGE: 63562, // TODO: Replace with the correct App ID when provided by the owner
+    CAPITAL_EDGE: 131530,
 };
 
 export const livechat_license_id = 12049137;
