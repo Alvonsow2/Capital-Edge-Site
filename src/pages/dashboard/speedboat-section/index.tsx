@@ -14,7 +14,7 @@ const SpeedboatSection = () => {
                         Trading
                     </h1>
                     <p className='speedboat-section__subtitle'>
-                        DBTraders gives you the tools to build, test, and deploy automated trading bots —
+                        Capital Edge gives you the tools to build, test, and deploy automated trading bots —
                         running 24/7 with precision and speed no human can match.
                     </p>
                     <div className='speedboat-section__stats'>

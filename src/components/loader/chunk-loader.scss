@@ -1,0 +1,168 @@
+.ce-splash {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #060d1a;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.ce-splash__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.ce-splash__grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(16, 185, 129, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16, 185, 129, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+}
+
+.ce-splash__glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+
+    &--left {
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+        top: -100px;
+        left: -150px;
+    }
+
+    &--right {
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(29, 78, 216, 0.12) 0%, transparent 70%);
+        bottom: -80px;
+        right: -100px;
+    }
+}
+
+.ce-splash__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    animation: ce-splash-fadein 0.5s ease-out;
+}
+
+@keyframes ce-splash-fadein {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.ce-splash__logo-wrap {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ce-splash__logo {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 0 12px rgba(16, 185, 129, 0.5));
+    animation: ce-logo-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes ce-logo-pulse {
+    0%, 100% { filter: drop-shadow(0 0 12px rgba(16, 185, 129, 0.5)); }
+    50%       { filter: drop-shadow(0 0 24px rgba(16, 185, 129, 0.9)); }
+}
+
+.ce-splash__logo-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1.5px solid rgba(16, 185, 129, 0.25);
+    animation: ce-ring-spin 3s linear infinite;
+
+    &--2 {
+        inset: -10px;
+        border-color: rgba(16, 185, 129, 0.12);
+        animation-duration: 5s;
+        animation-direction: reverse;
+    }
+}
+
+@keyframes ce-ring-spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+.ce-splash__brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.ce-splash__brand-name {
+    font-size: 2.8rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #10b981 0%, #34d399 40%, #6ee7b7 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+.ce-splash__brand-tag {
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #4a5a70;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+.ce-splash__bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+    height: 28px;
+}
+
+.ce-splash__bar {
+    width: 5px;
+    border-radius: 3px;
+    background: #10b981;
+    animation: ce-bar-wave 1.2s ease-in-out infinite;
+
+    &:nth-child(1) { animation-delay: 0s;    height: 10px; }
+    &:nth-child(2) { animation-delay: 0.15s; height: 18px; }
+    &:nth-child(3) { animation-delay: 0.3s;  height: 26px; }
+    &:nth-child(4) { animation-delay: 0.45s; height: 18px; }
+    &:nth-child(5) { animation-delay: 0.6s;  height: 10px; }
+}
+
+@keyframes ce-bar-wave {
+    0%, 100% { transform: scaleY(0.4); opacity: 0.4; }
+    50%       { transform: scaleY(1);   opacity: 1; }
+}
+
+.ce-splash__message {
+    font-size: 1.3rem;
+    color: #3d4f63;
+    letter-spacing: 0.04em;
+    margin: 0;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    text-align: center;
+    max-width: 280px;
+}

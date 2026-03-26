@@ -1,114 +1,152 @@
 import React from 'react';
+import { generateOAuthURL } from '@/components/shared';
+import { useOauth2 } from '@/hooks/auth/useOauth2';
+import { handleOidcAuthFailure } from '@/utils/auth-utils';
+import { requestOidcAuthentication } from '@deriv-com/auth-client';
+import useTMB from '@/hooks/useTMB';
 import './landing.scss';
 
 const LandingPage: React.FC = () => {
+    const { isOAuth2Enabled } = useOauth2();
+    const { onRenderTMBCheck, isTmbEnabled } = useTMB();
+
+    const handleLogin = async () => {
+        if (!isOAuth2Enabled) {
+            window.location.replace(generateOAuthURL());
+        } else {
+            const getQueryParams = new URLSearchParams(window.location.search);
+            const currency = getQueryParams.get('account') ?? '';
+            const query_param_currency = currency || sessionStorage.getItem('query_param_currency') || 'USD';
+
+            try {
+                const tmbEnabled = await isTmbEnabled();
+                if (tmbEnabled) {
+                    await onRenderTMBCheck();
+                } else {
+                    try {
+                        await requestOidcAuthentication({
+                            redirectCallbackUri: `${window.location.origin}/callback`,
+                            ...(query_param_currency
+                                ? {
+                                      state: {
+                                          account: query_param_currency,
+                                      },
+                                  }
+                                : {}),
+                        });
+                    } catch (err) {
+                        handleOidcAuthFailure(err);
+                    }
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    };
+
     const handleStartTrading = () => {
         window.location.href = 'https://app.deriv.com';
     };
 
     return (
-        <div className='dbt-landing'>
-            <div className='dbt-landing__bg'>
-                <div className='dbt-landing__grid-overlay' />
-                <div className='dbt-landing__glow dbt-landing__glow--left' />
-                <div className='dbt-landing__glow dbt-landing__glow--right' />
-                <div className='dbt-landing__glow dbt-landing__glow--center' />
-                <div className='dbt-landing__chart-lines'>
+        <div className='ce-landing'>
+            <div className='ce-landing__bg'>
+                <div className='ce-landing__grid-overlay' />
+                <div className='ce-landing__glow ce-landing__glow--left' />
+                <div className='ce-landing__glow ce-landing__glow--right' />
+                <div className='ce-landing__glow ce-landing__glow--center' />
+                <div className='ce-landing__chart-lines'>
                     {[...Array(10)].map((_, i) => (
-                        <div key={i} className={`dbt-landing__chart-line dbt-landing__chart-line--${i + 1}`} />
+                        <div key={i} className={`ce-landing__chart-line ce-landing__chart-line--${i + 1}`} />
                     ))}
                 </div>
             </div>
 
-            <nav className='dbt-landing__nav'>
-                <div className='dbt-landing__nav-logo'>
-                    <img src='/dbtraders.jpeg' alt='DBTraders Logo' className='dbt-landing__logo-img' />
-                    <span className='dbt-landing__logo-text'>DBTraders<span className='dbt-landing__logo-dot'>.</span></span>
+            <nav className='ce-landing__nav'>
+                <div className='ce-landing__nav-logo'>
+                    <img src='/ce-logo-default.png' alt='Capital Edge Logo' className='ce-landing__logo-img' />
+                    <span className='ce-landing__logo-text'>Capital Edge<span className='ce-landing__logo-dot'>.</span></span>
                 </div>
-                <div className='dbt-landing__nav-links'>
-                    <a href='https://www.dbtraders.com' target='_blank' rel='noopener noreferrer' className='dbt-landing__nav-link'>About</a>
-                    <a href='https://www.dbtraders.com' target='_blank' rel='noopener noreferrer' className='dbt-landing__nav-link'>Community</a>
-                    <button className='dbt-landing__nav-btn' onClick={handleStartTrading}>
+                <div className='ce-landing__nav-links'>
+                    <button className='ce-landing__nav-btn' onClick={handleLogin}>
+                        Log In
+                    </button>
+                    <button className='ce-landing__nav-btn ce-landing__nav-btn--outline' onClick={handleStartTrading}>
                         Start Trading
                     </button>
                 </div>
             </nav>
 
-            <div className='dbt-landing__content'>
-                <div className='dbt-landing__badge'>
-                    <span className='dbt-landing__badge-dot' />
-                    Your Ultimate Partner in Deriv Trading Success
+            <div className='ce-landing__content'>
+                <div className='ce-landing__badge'>
+                    <span className='ce-landing__badge-dot' />
+                    Trusted by 50,000+ Traders Worldwide
                 </div>
 
-                <h1 className='dbt-landing__title'>
-                    <span className='dbt-landing__title--brand'>DBTraders</span>
+                <h1 className='ce-landing__title'>
+                    <span className='ce-landing__title--brand'>Capital Edge</span>
                     <br />
-                    <span className='dbt-landing__title--sub'>We Build Traders</span>
+                    <span className='ce-landing__title--sub'>Built for Traders</span>
                 </h1>
 
-                <p className='dbt-landing__tagline'>
-                    Proven Strategies · Real-Time Mentorship · Powerful Tools
+                <p className='ce-landing__tagline'>The Future of Automated Trading</p>
+
+                <p className='ce-landing__description'>
+                    Harness the power of AI-driven bots, real-time analytics, and copy trading to maximize your profits.
+                    Join the revolution today.
                 </p>
 
-                <p className='dbt-landing__description'>
-                    At DBTraders, we don't just teach trading — we build traders. Join a growing community where you'll
-                    access proven strategies, real-time mentorship, and powerful tools designed to boost your trading
-                    consistency and profitability.
-                </p>
-
-                <div className='dbt-landing__cta'>
-                    <button className='dbt-landing__btn dbt-landing__btn--primary' onClick={handleStartTrading}>
+                <div className='ce-landing__cta'>
+                    <button className='ce-landing__btn ce-landing__btn--primary' onClick={handleStartTrading}>
                         Start Trading Now &rarr;
                     </button>
-                    <div className='dbt-landing__trust-badges'>
-                        <span>&#10003; Proven Strategies</span>
-                        <span>&#10003; Real-Time Mentorship</span>
-                        <span>&#10003; Powerful Tools</span>
+                    <div className='ce-landing__trust-badges'>
+                        <span>&#10003; No Credit Card Required</span>
+                        <span>&#10003; $10,000 Virtual Account</span>
+                        <span>&#10003; 24/7 Bot Automation</span>
                     </div>
                 </div>
 
-                <div className='dbt-landing__stats'>
-                    <div className='dbt-landing__stat'>
-                        <span className='dbt-landing__stat-value'>50K+</span>
-                        <span className='dbt-landing__stat-label'>Active Traders</span>
+                <div className='ce-landing__stats'>
+                    <div className='ce-landing__stat'>
+                        <span className='ce-landing__stat-value'>50.0K++</span>
+                        <span className='ce-landing__stat-label'>Active Traders</span>
                     </div>
-                    <div className='dbt-landing__stat'>
-                        <span className='dbt-landing__stat-value'>$2.5B+</span>
-                        <span className='dbt-landing__stat-label'>Trading Volume</span>
+                    <div className='ce-landing__stat'>
+                        <span className='ce-landing__stat-value'>$2.5B++</span>
+                        <span className='ce-landing__stat-label'>Trading Volume</span>
                     </div>
-                    <div className='dbt-landing__stat'>
-                        <span className='dbt-landing__stat-value'>99.9%</span>
-                        <span className='dbt-landing__stat-label'>Uptime</span>
+                    <div className='ce-landing__stat'>
+                        <span className='ce-landing__stat-value'>99.9%</span>
+                        <span className='ce-landing__stat-label'>Uptime</span>
                     </div>
-                    <div className='dbt-landing__stat'>
-                        <span className='dbt-landing__stat-value'>150+</span>
-                        <span className='dbt-landing__stat-label'>Trading Pairs</span>
+                    <div className='ce-landing__stat'>
+                        <span className='ce-landing__stat-value'>150++</span>
+                        <span className='ce-landing__stat-label'>Trading Pairs</span>
                     </div>
                 </div>
             </div>
 
-            <div className='dbt-landing__features'>
-                <div className='dbt-landing__feature'>
-                    <div className='dbt-landing__feature-icon'>📊</div>
-                    <h3 className='dbt-landing__feature-title'>Bot Builder</h3>
-                    <p className='dbt-landing__feature-desc'>Build automated trading bots with our visual drag-and-drop editor. No coding required.</p>
+            <div className='ce-landing__features'>
+                <div className='ce-landing__feature'>
+                    <div className='ce-landing__feature-icon'>🤖</div>
+                    <h3 className='ce-landing__feature-title'>Bot Builder</h3>
+                    <p className='ce-landing__feature-desc'>Build automated trading bots with our visual drag-and-drop editor. No coding required.</p>
                 </div>
-                <div className='dbt-landing__feature'>
-                    <div className='dbt-landing__feature-icon'>📈</div>
-                    <h3 className='dbt-landing__feature-title'>Live Charts</h3>
-                    <p className='dbt-landing__feature-desc'>Access real-time market data and advanced charting tools to make informed decisions.</p>
+                <div className='ce-landing__feature'>
+                    <div className='ce-landing__feature-icon'>📈</div>
+                    <h3 className='ce-landing__feature-title'>Live Charts</h3>
+                    <p className='ce-landing__feature-desc'>Access real-time market data and advanced charting tools to make informed decisions.</p>
                 </div>
-                <div className='dbt-landing__feature'>
-                    <div className='dbt-landing__feature-icon'>🤝</div>
-                    <h3 className='dbt-landing__feature-title'>Community</h3>
-                    <p className='dbt-landing__feature-desc'>Join thousands of traders sharing strategies, insights, and mentorship daily.</p>
+                <div className='ce-landing__feature'>
+                    <div className='ce-landing__feature-icon'>⚡</div>
+                    <h3 className='ce-landing__feature-title'>Copy Trading</h3>
+                    <p className='ce-landing__feature-desc'>Follow expert traders and automatically replicate their strategies for consistent profits.</p>
                 </div>
             </div>
 
-            <footer className='dbt-landing__footer'>
-                <p>© {new Date().getFullYear()} DBTraders. All rights reserved. &nbsp;|&nbsp;
-                    <a href='https://www.dbtraders.com' target='_blank' rel='noopener noreferrer'>dbtraders.com</a>
-                </p>
+            <footer className='ce-landing__footer'>
+                <p>© {new Date().getFullYear()} Capital Edge. All rights reserved. Built for Traders.</p>
             </footer>
         </div>
     );

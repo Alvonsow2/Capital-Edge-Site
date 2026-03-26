@@ -123,7 +123,7 @@ const SimpleOAuthCallback = () => {
         return (
             <div style={{ textAlign: 'center', padding: '40px' }}>
                 <p>Login failed. Please try again.</p>
-                <Button onClick={() => { window.location.href = '/'; }}>Return to DBTraders</Button>
+                <Button onClick={() => { window.location.href = '/'; }}>Return to Capital Edge</Button>
             </div>
         );
     }

@@ -313,6 +313,20 @@ const AppContent = observer(() => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [is_loading, is_api_initialized]);
 
+    // Fast 6-second timeout: if API never connects at all, show landing page instead of black screen
+    React.useEffect(() => {
+        const hasStoredAuthFast =
+            !!localStorage.getItem('active_loginid') || !!localStorage.getItem('authToken');
+        if (hasStoredAuthFast) return; // Don't short-circuit if user has stored auth
+        const timeout = setTimeout(() => {
+            if (!is_api_initialized && is_loading) {
+                setIsLoading(false);
+            }
+        }, 6000);
+        return () => clearTimeout(timeout);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     useEffect(() => {
         initDatadog(true);
         if (client) {

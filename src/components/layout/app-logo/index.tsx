@@ -2,16 +2,19 @@ import './app-logo.scss';
 
 export const AppLogo = () => {
     return (
-        <a href='/' className='app-header__logo dbt-logo'>
-            <div className='dbt-logo-wrapper'>
+        <a href='/' className='app-header__logo capital-edge-logo'>
+            <div className='ce-logo-wrapper'>
                 <img
-                    src='/dbtraders.jpeg'
-                    alt='DBTraders - Your Ultimate Partner in Deriv Trading Success'
-                    className='dbt-logo-img'
+                    src='/ce-logo-default.png'
+                    alt='Capital Edge - Built for Traders'
+                    className='ce-logo-img ce-logo-img--default'
                 />
-                <span className='dbt-logo-text'>
-                    DBTraders<span className='dbt-logo-dot'>.</span>
-                </span>
+                <img
+                    src='/capital-edge-logo.png'
+                    alt='Capital Edge - Built for Traders'
+                    className='ce-logo-img ce-logo-img--dark'
+                />
+                <span className='ce-logo-shimmer' aria-hidden='true' />
             </div>
         </a>
     );
