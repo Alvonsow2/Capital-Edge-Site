@@ -13,7 +13,7 @@ import {
 } from '@deriv/quill-icons/Logo';
 import { localize } from '@deriv-com/translations';
 
-const CapitalEdgeButtonLogo = () => (
+const DBTradersButtonLogo = () => (
     <span
         style={{
             display: 'flex',
@@ -22,15 +22,16 @@ const CapitalEdgeButtonLogo = () => (
             fontWeight: 800,
             fontSize: '1.4rem',
             letterSpacing: '0.04em',
-            color: '#10b981',
+            color: '#f59e0b',
             textTransform: 'uppercase',
         }}
     >
-        ⚡ Capital Edge
+        <img src='/dbtraders.jpeg' alt='DBTraders' style={{ width: '20px', height: '20px', borderRadius: '4px', objectFit: 'cover' }} />
+        DBTraders
     </span>
 );
 
-const CapitalEdgeIconLogo = () => (
+const DBTradersIconLogo = () => (
     <span
         style={{
             display: 'flex',
@@ -39,11 +40,12 @@ const CapitalEdgeIconLogo = () => (
             fontWeight: 800,
             fontSize: '1.6rem',
             letterSpacing: '0.04em',
-            color: '#10b981',
+            color: '#f59e0b',
             textTransform: 'uppercase',
         }}
     >
-        ⚡ Capital Edge
+        <img src='/dbtraders.jpeg' alt='DBTraders' style={{ width: '24px', height: '24px', borderRadius: '4px', objectFit: 'cover' }} />
+        DBTraders
     </span>
 );
 
@@ -86,10 +88,10 @@ export const platformsConfig: PlatformsConfig[] = [
     },
     {
         active: true,
-        buttonIcon: <CapitalEdgeButtonLogo />,
+        buttonIcon: <DBTradersButtonLogo />,
         description: localize('Automated trading at your fingertips. No coding needed.'),
         href: standalone_routes.bot,
-        icon: <CapitalEdgeIconLogo />,
+        icon: <DBTradersIconLogo />,
         showInEU: false,
     },
     {

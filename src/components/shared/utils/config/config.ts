@@ -9,7 +9,7 @@ export const APP_IDS = {
     PRODUCTION: 65555,
     PRODUCTION_BE: 65556,
     PRODUCTION_ME: 65557,
-    CAPITAL_EDGE: 63562,
+    DBTRADERS: 0, // TODO: Replace 0 with the correct App ID provided by the owner
 };
 
 export const livechat_license_id = 12049137;
@@ -73,7 +73,7 @@ export const getDefaultAppIdAndUrl = () => {
     }
 
     const current_domain = getCurrentProductionDomain() ?? '';
-    const app_id = domain_app_ids[current_domain as keyof typeof domain_app_ids] ?? APP_IDS.CAPITAL_EDGE;
+    const app_id = domain_app_ids[current_domain as keyof typeof domain_app_ids] ?? APP_IDS.DBTRADERS;
 
     return { app_id, server_url };
 };
@@ -90,7 +90,7 @@ export const getAppId = () => {
     } else if (isTestLink()) {
         app_id = APP_IDS.LOCALHOST;
     } else {
-        app_id = domain_app_ids[current_domain as keyof typeof domain_app_ids] ?? APP_IDS.CAPITAL_EDGE;
+        app_id = domain_app_ids[current_domain as keyof typeof domain_app_ids] ?? APP_IDS.DBTRADERS;
     }
 
     return app_id;
@@ -155,7 +155,7 @@ export const generateOAuthURL = () => {
     }
 
     const url = new URL(`https://${oauth_hostname}/oauth2/authorize`);
-    url.searchParams.set('app_id', String(APP_IDS.CAPITAL_EDGE));
+    url.searchParams.set('app_id', String(APP_IDS.DBTRADERS));
     url.searchParams.set('l', lang.toLowerCase());
     url.searchParams.set('redirect_uri', redirect_uri);
 
